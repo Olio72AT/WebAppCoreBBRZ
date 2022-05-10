@@ -1,0 +1,73 @@
+﻿@model WebAppCoreBBRZ.Models.Admin
+
+@{
+    ViewData["Title"] = "DetailsPartial";
+}
+
+<h1>DetailsPartial</h1>
+
+<div>
+    <h4>Admin</h4>
+    <hr />
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Id)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Id)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Email)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
+                </dl>
+
+            </div>
+            <div class="col-sm-6">
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Role)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Role)
+                    </dd>
+
+                    @{ 
+                        if (Model.SessionID != null)
+                        {
+                            Html.RenderPartialAsync("DetailsPartialSessionID", Model);
+                        }
+
+
+
+                     }
+
+                   
+
+
+                </dl>
+            </div>
+            
+        </div>
+    </div>
+
+
+
+   
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index3">Back to List</a>
+</div>

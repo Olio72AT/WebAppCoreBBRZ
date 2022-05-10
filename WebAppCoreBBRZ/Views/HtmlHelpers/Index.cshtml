@@ -1,0 +1,181 @@
+﻿@model WebAppCoreBBRZ.Models.HtmlTagHelpers
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>HTML Helpers</h2>
+
+<a href="https://www.tutorialsteacher.com/mvc/html-helpers" target="_new"> HTML Helpers &copy; Teachers Tutorial </a> &nbsp; &nbsp; &nbsp; vs.&nbsp; &nbsp; &nbsp;
+<a href="https://docs.microsoft.com/en-us/aspnet/core/mvc/views/working-with-forms?view=aspnetcore-5.0" target="_new"> Tag Helpers - Core 5.0 </a>
+&nbsp; &nbsp; &nbsp; vs.&nbsp; &nbsp; &nbsp; <a href="https://getbootstrap.com/docs/4.3/components" target="_new"> Bootstrap Components (4.3.1) </a>
+<br />
+<br />
+@Html.ActionLink("See and test them in action", "Test")
+
+<img src="../Graphics/yeah.png" style="width:150px;" alt="Oh Yeah clipartmax.com">
+<br />
+<br />
+
+
+
+
+<article class="article">
+
+    <p>The following table lists the <code>HtmlHelper</code> methods and HTML control each method renders.</p>
+    <div class="table table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="col-xs-4">
+                        <strong>Extension Method</strong>
+                    </th>
+                    <th class="col-xs-4">
+                        <strong>Strongly Typed Method</strong>
+                    </th>
+                    <th class="col-xs-4">
+                        <strong>Html Control</strong>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        Html.ActionLink()
+                    </td>
+                    <td>
+                        NA
+                    </td>
+                    <td>
+                        &lt;a&gt;&lt;/a&gt;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Html.TextBox()
+                    </td>
+                    <td>
+                        Html.TextBoxFor()
+                    </td>
+                    <td>
+                        &lt;input type="textbox"&gt;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Html.TextArea()
+                    </td>
+                    <td>
+                        Html.TextAreaFor()
+                    </td>
+                    <td>
+                        &lt;input type="textarea"&gt;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Html.CheckBox()
+                    </td>
+                    <td>
+                        Html.CheckBoxFor()
+                    </td>
+                    <td>
+                        &lt;input type="checkbox"&gt;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Html.RadioButton()
+                    </td>
+                    <td>
+                        Html.RadioButtonFor()
+                    </td>
+                    <td>
+                        &lt;input type="radio"&gt;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Html.DropDownList()
+                    </td>
+                    <td>
+                        Html.DropDownListFor()
+                    </td>
+                    <td>
+                        &lt;select&gt;<br />
+                        &lt;option&gt;<br />
+                        &lt;/select&gt;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Html.ListBox()
+                    </td>
+                    <td>
+                        Html.ListBoxFor()
+                    </td>
+                    <td>
+                        multi-select list box: &lt;select&gt;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Html.Hidden()
+                    </td>
+                    <td>
+                        Html.HiddenFor()
+                    </td>
+                    <td>
+                        &lt;input type="hidden"&gt;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Html.Password()
+                    </td>
+                    <td>
+                        Html.PasswordFor()
+                    </td>
+                    <td>
+                        &lt;input type="password"&gt;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Html.Display()
+                    </td>
+                    <td>
+                        Html.DisplayFor()
+                    </td>
+                    <td>
+                        HTML text: ""
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Html.Label()
+                    </td>
+                    <td>
+                        Html.LabelFor()
+                    </td>
+                    <td>
+                        &lt;label&gt;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Html.Editor()
+                    </td>
+                    <td>
+                        Html.EditorFor()
+                    </td>
+                    <td>
+                        Generates Html controls based on data type of specified model property e.g. textbox for string property, numeric field for int, double or other numeric type.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>The difference between calling the <code>HtmlHelper</code> methods and using an HTML tags is that the <code>HtmlHelper</code> method is designed to make it easy to bind to view data or model data.</p>
+    <p>Learn about various <code>HtmlHelper</code> methods in the next few sections.</p>
+</article>

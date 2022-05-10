@@ -1,0 +1,261 @@
+﻿@model WebAppCoreBBRZ.Models.HtmlTagHelpers
+
+@{
+    ViewData["Title"] = "Test";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>HTMLHelpers</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.id)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TextBox, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TextBox, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TextBox, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TextArea, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TextArea, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TextArea, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CheckBox, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.CheckBox)
+                                @Html.ValidationMessageFor(model => model.CheckBox, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CheckBox2, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.CheckBox2)
+                                @Html.ValidationMessageFor(model => model.CheckBox2, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    @*<div class="form-group">
+                        @Html.LabelFor(model => model.Hidden, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Hidden, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Hidden, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DropDown1, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.DropDown1, new SelectList(Enum.GetValues(typeof(WebAppCoreBBRZ.Models.dropdowntype))), "Select Item", new { @class = "form-control" })
+
+                            @* ,new { htmlAttributes = new { @class = "form-control" } }) *@
+
+                            @Html.ValidationMessageFor(model => model.DropDown1, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DropDown2, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.DropDown2, new SelectList(new List<string>()
+                       { "Wooden Cotton", "Brick Material", "Metal as Metal is", "Oliver" }), "Select Material", new { @class = "form-control" })
+
+                            @* ,new { htmlAttributes = new { @class = "form-control" } }) *@
+
+                            @Html.ValidationMessageFor(model => model.DropDown2, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @{ 
+                        var itemsToDisplay = new List<string>() { "Peter", "Oliver", "Paul", "Mary" };
+
+                    }
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ListBox, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.ListBoxFor(model => model.ListBox, new SelectList(itemsToDisplay), new { @class = "form-control" })
+
+
+                            @Html.ValidationMessageFor(model => model.ListBox, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Editor, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Editor, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Editor, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Post it ... " class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+                        }
+
+        </div>
+        <div class="col-6">
+            <h4>TagHelpers <a href="https://docs.microsoft.com/en-us/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper?view=aspnetcore-5.0" target="_blank"> Microsoft Help</a></h4>
+            <hr />
+
+            <form asp-controller="HtmlHelpers" asp-action="Test" method="post">
+
+                <div class="form-group">
+                    <label asp-for="TextBox" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <input asp-for="TextBox" class="form-control" />
+                        <span asp-validation-for="TextBox" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="TextArea" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <textarea asp-for="TextArea" class="form-control"> </textarea>
+                        <span asp-validation-for="TextArea" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="CheckBox" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <input asp-for="CheckBox" />
+                        <span asp-validation-for="CheckBox" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="CheckBox2" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <input asp-for="CheckBox2" />
+                        <span asp-validation-for="CheckBox2" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="DropDown1" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <select asp-for="DropDown1" asp-items="Html.GetEnumSelectList<WebAppCoreBBRZ.Models.dropdowntype>()"
+                                class="form-control"> </select>
+                        <span asp-validation-for="DropDown1" class="text-danger"></span>
+                    </div>
+                </div>
+
+                @{ var entryList = new List<string>() { "Wooden Cotton", "Brick Material", "Metal As Metal is", (2.03f).ToString() }; }
+
+                <div class="form-group">
+                    <label asp-for="DropDown2" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <select class="form-control" id="DropDown2" name="DropDown2">
+                            @{ foreach (var item in entryList)
+                                {
+
+                                    <option> @item </option>
+                                } }
+
+                        </select>
+                        <span asp-validation-for="DropDown2" class="text-danger"></span>
+                    </div>
+                </div>
+
+                @{ var entryList2 = new SelectList(new List<string>() { "Peter", "Paul", "Mary", (2.03f).ToString() });}
+
+                <div class="form-group">
+                    <label asp-for="ListBox" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <select asp-for="ListBox" asp-items="entryList2" class="form-control"></select>
+                        <span asp-validation-for="DropDown2" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Editor" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <textarea asp-for="Editor" class="form-control text-box"> </textarea>
+                        <span asp-validation-for="Editor" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="alert alert-success" role="alert">
+                    Now ... try to program all the fields with <b>Tag helpers</b>
+                </div>
+
+                <div class="alert alert-secondary" role="alert">
+                    Add now a TextBox ["UserID"], Password ["Pin"], Password ["Repeat Pin"] und einen extra Button [Reset Password]
+                </div>
+
+                <button type="submit" class="btn btn-warning">Post it ... </button>
+
+                <hr />
+
+                <div class="form-group">
+                    <label asp-for="UserId" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <input asp-for="UserId" class="form-control" />
+                        <span asp-validation-for="UserId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Pin" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <input asp-for="Pin" class="form-control" value="12345" />
+                        <span asp-validation-for="Pin" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="RepeatPin" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <input asp-for="RepeatPin" class="form-control" value="54321" />
+                        <span asp-validation-for="RepeatPin" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-warning">Reset Password </button>
+
+            </form>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

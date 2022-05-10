@@ -1,0 +1,76 @@
+﻿@model IEnumerable<WebAppCoreBBRZ.Models.Todo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aufgabe)
+                @Html.ActionLink("🠗", "Index", new { sortaufgabe = "down" })
+                @Html.ActionLink("🠕", "Index", new { sortaufgabe = "up" })
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Beschreibung)
+                @Html.ActionLink("🠗", "Index", new { sortbeschreibung = "down" })
+                @Html.ActionLink("🠕", "Index", new { sortbeschreibung = "up" })
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Done)
+                @Html.ActionLink("🠗", "Index", new { sortdone = "down" })
+                @Html.ActionLink("🠕", "Index", new { sortdone = "up" })
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FKUser)
+                
+            </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.Active)
+        </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aufgabe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Beschreibung)
+            </td>
+            <td>
+                @{ bool tempitem = item.Done; }
+                @Html.ActionLink(tempitem.ToString(), "Index", new { doneitem = tempitem, id = item.Id })
+
+                @*@Html.DisplayFor(modelItem => item.Done)*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FKUser)
+            </td>
+
+            @*<td>
+            @Html.DisplayFor(modelItem => item.Active)
+        </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

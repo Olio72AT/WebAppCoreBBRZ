@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>UeberUns</h2>
+
+@{var imagepath = @"../Graphics/ueber_uns.jpg";
+}
+
+<div id="ourcontainer">
+    <img src="@imagepath" style="margin-left:100px;" id="graphic" alt="Our Graphic ... ">
+</div>
+
+<hr />
+<p> 1) Now show me the dimensions of the window, the screen and the div element "ourcontainer" </p>
+
+<p id="a1"></p>
+
+<p> 2) Display the URL with JS  </p>
+<p> 3) Now try to create a button, which brings you BACK to the last page.  </p>
+<p> 4) Try to read the cookie "Snipplets" with JS, which has been stored in MVC right in the action. Indicate the data.   </p>
+<p> 5) Now implement the JS code, to move the picture left or right by 5 px, when pressing the button.  </p>
+<p><button onclick="myMove(1)" class="btn btn-outline-info">Move picture left</button> <button onclick="myMove(2)" class="btn btn-outline-info">Move picture right</button> </p>
+<p> 6) Enter some text and show the number of characters as text beneath, during typing.  </p>
+<p> <input type="text" onkeypress="myEnteredText()" class="form-control" id="mytext"> </p>
+<p> 7) You have got a JSON file in JSONExamples/countries.json. Read it with JS AJAX and write the country names like "Afghanistan, Albania, ..." </p>
+<div id="countrieshere"></div>
+<p> 8) Whenever you type a country here, show only the countries, which match with the div and filter them  </p>
+<p> <input type="text" onkeypress="myCountries()" class="form-control" id="mycounties"> </p>
+
+<hr />
+
+<p> Have fun ;) </p>
+
+<script>
+    function myMove(navigator)
+    {
+        var elem = document.getElementById("graphic");
+        if (navigator == 1) {
+            // MOVE THE PICTURE LEFT BY 5 PX
+            console.log("picture left pressed");
+        } else {
+            // MOVE THE PICTURE RIGHT BY 5 PX
+            console.log("picture right pressed");
+        }
+
+    }
+    console.log("Here we go !!!");
+    document.getElementById("a1").innerHTML = "probehalber";
+</script>

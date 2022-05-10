@@ -1,0 +1,107 @@
+﻿@model WebAppCoreBBRZ.Models.HtmlTagHelpers
+
+@{
+    ViewData["Title"] = "TestOutput";
+}
+
+<h2>TestOutput</h2>
+
+<div>
+    <h4>HTMLHelpers</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TextBox)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TextBox)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TextArea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TextArea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckBox)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CheckBox)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckBox2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CheckBox2)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Hidden)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hidden)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DropDown1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DropDown1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DropDown2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DropDown2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ListBox)
+        </dt>
+
+        <dd>
+
+            @Html.ListBoxFor(model => model.ListBox, new SelectList(WebAppCoreBBRZ.Controllers.HtmlHelpersController.LBTransfer, new { @class = "form-control" }))
+
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Editor)
+        </dt>
+
+        <dd>
+            @Html.EditorFor(model => model.Editor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Test">Back to Entry</a>
+</div>

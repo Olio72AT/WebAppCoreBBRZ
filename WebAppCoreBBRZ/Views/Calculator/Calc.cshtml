@@ -1,0 +1,156 @@
+﻿@model WebAppCoreBBRZ.Models.Calculator
+
+@{
+    ViewData["Title"] = "Calc";
+    
+}
+
+<h1>Calc</h1>
+
+<div>
+    <h4>Calculator - <a href="https://de.wikipedia.org/wiki/Umgekehrte_polnische_Notation" target="_blank">Umgekehrte, polnische Notation</a> - <a href="https://orange-attractor.eu/?p=497#more-497" target="_blank">Beispiel</a></h4>
+    <hr />
+    <div class="row">
+        <div class="offset-1">
+
+        </div>
+        <div class="col-6" style="margin: 10px">
+            <div class="input-group flex-nowrap">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon-wrapping">Register 4</span>
+                </div>
+                <input type="text" class="form-control" placeholder=@Model.Results[0] aria-label="Register 4" aria-describedby="addon-wrapping" readonly>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="offset-1">
+
+        </div>
+        <div class="col-6" style="margin: 10px">
+            <div class="input-group flex-nowrap">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon-wrapping">Register 3</span>
+                </div>
+                <input type="text" class="form-control" placeholder=@Model.Results[1] aria-label="Register 3" aria-describedby="addon-wrapping" readonly>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="offset-1">
+
+        </div>
+        <div class="col-6" style="margin: 10px">
+            <div class="input-group flex-nowrap">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon-wrapping">Register 2</span>
+                </div>
+                <input type="text" class="form-control" placeholder=@Model.Results[2] aria-label="Register 2" aria-describedby="addon-wrapping" readonly>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="offset-1">
+
+        </div>
+        <div class="col-6" style="margin: 10px">
+            <div class="input-group flex-nowrap">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon-wrapping">Register 1</span>
+                </div>
+                <input type="text" class="form-control" placeholder=@Model.Register1 aria-label="Register 1" aria-describedby="addon-wrapping" readonly>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="offset-2">
+
+
+        </div>
+        <div class="col-6" style="margin: 1em">
+            <a asp-action="Calc" asp-route-value="7" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">7</a>
+            <a asp-action="Calc" asp-route-value="8" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">8</a>
+            <a asp-action="Calc" asp-route-value="9" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">9</a>
+            <a asp-action="Calc" asp-route-value="/" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">/</a>
+            <a asp-action="Calc" asp-route-value="*" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">*</a>
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="offset-2">
+
+
+        </div>
+        <div class="col-8" style="margin: 1em">
+            <a asp-action="Calc" asp-route-value="4" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">4</a>
+            <a asp-action="Calc" asp-route-value="5" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">5</a>
+            <a asp-action="Calc" asp-route-value="6" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">6</a>
+            <a asp-action="Calc" asp-route-value="+" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">+</a>
+            <a asp-action="Calc" asp-route-value="-" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">-</a>
+
+
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="offset-2">
+
+
+        </div>
+        <div class="col-8" style="margin: 1em">
+            <a asp-action="Calc" asp-route-value="1" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">1</a>
+            <a asp-action="Calc" asp-route-value="2" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">2</a>
+            <a asp-action="Calc" asp-route-value="3" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">3</a>
+            <a asp-action="Calc" asp-route-value="0" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">0</a>
+            <a asp-action="Calc" asp-route-value="." class="btn btn-primary btn-lg active" role="button" aria-pressed="true">.</a>
+
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="offset-2">
+
+
+        </div>
+        <div class="col-8" style="margin: 1em">
+            <a asp-action="Calc" asp-route-value="Enter" class="btn btn-outline-success btn-lg" role="button" aria-pressed="true">Enter</a>
+            <a asp-action="Calc" asp-route-value="C" class="btn btn-outline-secondary btn-lg" role="button" aria-pressed="true">C</a>
+            <a asp-action="Calc" asp-route-value="AC" class="btn btn-outline-secondary btn-lg" role="button" aria-pressed="true">AC</a>
+            <a asp-action="Calc" asp-route-value="AVG" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">AVG</a>
+            <a asp-action="Calc" asp-route-value="SUM" asp-route-peter=5 class="btn btn-primary btn-lg active" role="button" aria-pressed="true">SUM</a>
+
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+
+            My current session ID is @Html.DisplayFor(model => model.SessionID) <br />
+            @ViewBag.errmsg
+        </div>
+        
+        <div class="col-9-sm col-7-md" style="margin-top: 25px;">
+            <div class="alert alert-success" role="alert">
+                Now implement the buttons <b>"+", "-", "*", "/", ".", "SUM" (of all registers), "AVG" (of all registers)</b>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    
+    <a asp-action="Index">Reload</a>
+</div>

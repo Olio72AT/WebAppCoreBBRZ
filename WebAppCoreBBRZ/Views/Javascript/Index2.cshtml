@@ -1,0 +1,142 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>UeberUns</h2>
+
+@{var imagepath = @"../Graphics/ueber_uns.jpg";
+}
+
+<div id="ourcontainer">
+    <img src="@imagepath" style="margin-left:100px;" id="graphic" alt="Our Graphic ... ">
+</div>
+
+<hr />
+<p> 1) Now show me the dimensions of the window, the screen and the div element "ourcontainer" </p>
+
+<p id="a1"></p>
+
+<p> 2) Display the URL with JS  </p>
+<p id="a2"></p>
+<p> 3) Now try to create a button, which brings you BACK to the last page.  </p>
+
+<button type="button" ondblclick="history.forward();" onclick="history.back();" class="btn btn-outline-info" >Back</button> 
+<br /><br />
+<p> 4) Try to read the cookie "Snipplets" with JS, which has been stored in MVC right in the action. Indicate the data.   </p>
+<p id="a4"> </p>
+
+<p> 5) Now implement the JS code, to move the picture left or right by 5 px, when pressing the button.  </p>
+<p><button onclick="myMove(1)" class="btn btn-outline-info">Move picture left</button> <button onclick="myMove(2)" class="btn btn-outline-info">Move picture right</button> </p>
+<p> 6) Enter some text and show the number of characters as text beneath, during typing.  </p>
+<p> <input type="text" onkeyup="myEnteredText()" class="form-control" id="mytext"> </p>
+<div id="a6"></div> 
+
+<p> 7) You have got a JSON file in JSONExamples/countries.json. Read it with JS AJAX and write the country names like "Afghanistan, Albania, ..." </p>
+<div id="countrieshere"></div>
+<p> 8) Whenever you type a country here, show only the countries, which match with the div and filter them  </p>
+<p> <input type="text" onkeyup="loadDocandFilter8()" class="form-control" id="mycountries"> </p>
+<div id="countrieshere2"></div>
+<hr />
+
+<p> Have fun ;) </p>
+<script src="~/js/site.js"></script>
+<script onload="hello('Ahaaa!')" >
+    function Beispiel1() {
+
+        var text = "WindowHeight: " + window.innerHeight + "<br>" +
+            "WindowWitdh: " + window.innerWidth + "<br>" +
+            "ScreenHeigth: " + screen.availHeight + "<br>" +
+            "ScreenWidth: " + screen.availWidth + "<br>" +
+            "DivHeigth: " + document.getElementById("ourcontainer").clientHeight + "<br>" +
+            "DivWidth: " + document.getElementById("ourcontainer").clientWidth + "<br>";
+
+            ;
+        document.getElementById("a1").innerHTML = text;
+    }
+
+    function Beispiel2() {
+
+        document.getElementById("a2").innerHTML = window.location.href;
+    }
+
+    document.getElementById("a4").innerHTML= document.cookie.split('=')[1];
+
+    function myMove(navigator)
+    {
+        var elem = document.getElementById("graphic");
+        var pixelmargin = parseInt(elem.style.marginLeft);
+
+        if (navigator == 1) {
+            // MOVE THE PICTURE LEFT BY 5 PX
+            pixelmargin -= 5;
+            elem.style.marginLeft = pixelmargin + "px";
+
+            console.log("picture left pressed");
+        } else {
+            // MOVE THE PICTURE RIGHT BY 5 PX
+            pixelmargin += 5;
+            elem.style.marginLeft = pixelmargin + "px";
+            console.log("picture right pressed");
+        }
+
+    }
+
+    function myEnteredText() {
+        var txt = document.getElementById("mytext").value;
+        var len = txt.length;
+        document.getElementById("a6").innerHTML = "Textlänge: " + len;
+    }
+
+    function loadDoc() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var myObj = JSON.parse(this.responseText);
+                for (var i = 0; i < myObj.length; i++) {
+                    document.getElementById("countrieshere").innerHTML += myObj[i].name + ", ";
+                }
+                document.getElementById("countrieshere").innerHTML = 
+                    document.getElementById("countrieshere").innerHTML.slice(0,
+                        document.getElementById("countrieshere").innerHTML.length - 2) + "<br><br>";
+            }
+        };
+
+        
+
+        xhttp.open("GET", "../JSONExample/countries.json", true);
+        xhttp.send();
+    }
+
+    function loadDocandFilter8() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var myObj = JSON.parse(this.responseText);
+                document.getElementById("countrieshere2").innerHTML = "";
+                var filtertext = document.getElementById("mycountries").value;
+
+                for (var i = 0; i < myObj.length; i++) {
+
+                    filtertext = filtertext.toLowerCase();
+                    if (myObj[i].name.toLowerCase().search(filtertext) != -1) {
+
+                        document.getElementById("countrieshere2").innerHTML += myObj[i].name + ", ";
+                    }
+                }
+
+                document.getElementById("countrieshere2").innerHTML =
+                    document.getElementById("countrieshere2").innerHTML.slice(0,
+                        document.getElementById("countrieshere2").innerHTML.length - 2) + "<br><br>";
+            }
+        };
+        xhttp.open("GET", "../JSONExample/countries.json", true);
+        xhttp.send();
+    }
+
+    console.log("Here we go !!!");
+    Beispiel1();
+    Beispiel2();
+    hello("Juhuu!!!");
+    loadDoc();
+    // document.getElementById("a1").innerHTML = "probehalber";
+</script>

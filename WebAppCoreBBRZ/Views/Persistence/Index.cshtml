@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Persistence with certain methods</h1>
+
+<p> We differ between storing objects as binary and human readable texts stored as JSON (XML) on the SERVERS drive.</p>
+
+<p> @TempData["JSON"] </p>
+
+<div class="container" style="border-radius:12px; padding:14px ;background: url('Graphics/unsplash.jpg') 
+        no-repeat center center fixed; 
+        -webkit-background-size: cover; 
+        -moz-background-size: cover; 
+        background-size: cover; 
+        -o-background-size: cover;">
+
+    <div class="row">
+        <div class="col-sm">
+            <div class="card" style="margin-bottom:20px;">
+                <div class="card-body">
+                    <h5 class="card-title">Serialization</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Microsoft Documentation</h6>
+                    <p class="card-text">Serialization is the process of converting an object into a stream of bytes to store the object or transmit it to memory, a database, or a file. Its main purpose is to save the state of an object in order to be able to recreate it when needed. The reverse process is called deserialization.</p>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/serialization/" target="_blank" class="card-link">Help on Serialization</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/serialization/walkthrough-persisting-an-object-in-visual-studio" class="card-link">Serialize Objects</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">JSON Example</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Todo's as JSON </h6>
+                    <div class="form-group">
+                        @*<label for="exampleFormControlTextarea1">TODOs</label>*@
+                        <textarea class="form-control" id="jsontextarea" rows="10" placeholder="@ViewData["JSON"]"></textarea>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="d-none d-sm-block col-sm ">
+            <div class="card" style="width: 20rem;">
+                <div class="card-body">
+                    <h5 class="card-title">JSON</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Javascript Object Notation</h6>
+                    <p class="card-text">Provides high-performance, low-allocating, and standards-compliant capabilities to process JavaScript Object Notation (JSON), which includes serializing objects to JSON text and deserializing JSON text to objects, with UTF-8 support built-in. It also provides types to read and write JSON text encoded as UTF-8, and to create an in-memory document object model (DOM) for random access of the JSON elements within a structured view of the data.</p>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.text.json?view=net-5.0" class="card-link">Documentation (NET 5.0)</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="d-block d-sm-none col-sm col-xs">
+            <div class="card" style="width: 20rem; margin-top:20px;">
+                <div class="card-body">
+                    <h5 class="card-title">JSON Test</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Javascript Object Notation</h6>
+                    <p class="card-text">Provides high-performance, low-allocating, and standards-compliant capabilities to process JavaScript Object Notation (JSON), which includes serializing objects to JSON text and deserializing JSON text to objects, with UTF-8 support built-in. It also provides types to read and write JSON text encoded as UTF-8, and to create an in-memory document object model (DOM) for random access of the JSON elements within a structured view of the data.</p>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.text.json?view=net-5.0" class="card-link">Documentation (NET 5.0)</a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

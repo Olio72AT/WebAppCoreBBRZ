@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"] = "CalcError";
+}
+
+<h1>Division by 0</h1>
+
+Please type another function ... <br /><br />
+
+<input type="button" value="Back" class="btn btn-outline-secondary btn-sm" 
+       onclick="window.location.href='calc?errmsg=Division%20by%20Zero!'" /> <br />
+
+<a asp-action="Calc" asp-controller="Calculator" asp-route-value="AC" 
+   asp-route-errmsg="Do not forget: Division by Zero!"
+   class="btn btn-outline-secondary btn-sm" role="button" style="margin-top:10px"
+   aria-pressed="true">Back and clear input</a>
+
+<a asp-action="Index" asp-controller="Home" 
+   class="btn btn-outline-secondary btn-sm" role="button" style="margin-top:10px"
+   aria-pressed="true">Home</a>

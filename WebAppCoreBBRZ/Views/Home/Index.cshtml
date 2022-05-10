@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div class="alert alert-danger" role="alert">
+    Bootstrap Playground ... have fun ...
+</div>
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm">
+            <p>
+                Hello, das ist mein Text aus dem Index View im Home Controller. @DateTime.Now.ToString()
+            </p>
+        </div>
+        <div class="col-sm">
+            One of three columns - Oliver 2.
+        </div>
+        <div class="col-sm">
+            One of three columns
+        </div>
+    </div>
+    <div class="row">
+        <div class="alert alert-primary" role="alert">
+            A simple primary alert—check it out!
+        </div>
+        <button type="button" class="btn btn-primary btn-sm">
+            Notifications <span class="badge badge-success">6</span>
+        </button>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Library</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Data</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col">
+            <a href="#" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Primary link</a>
+            <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Link</a>
+            @Html.ActionLink("Hello", "Privacy","Home", null ,  new { @class = "btn btn-primary btn-lg" })
+            @{ 
+                var oliver = new List<Int32>();
+
+            }
+        </div>
+    </div>
+
+</div>

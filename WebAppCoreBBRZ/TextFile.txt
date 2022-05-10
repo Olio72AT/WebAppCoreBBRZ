@@ -1,0 +1,47 @@
+﻿public ActionResult Edit(int id, Admin admin)
+{
+Services.PersistenceService.LoadJSON();
+try
+{
+var me = AmILoggedInternal();
+
+
+
+if (me != null)
+{
+var elemToEdit = adminListe.Where(x => x.Id == id).FirstOrDefault();
+elemToEdit.Name = admin.Name;
+elemToEdit.Email = admin.Email;
+if (admin.Role == RoleType.NotLoggedIn)
+{
+elemToEdit.SessionID = null;
+Services.PersistenceService.SaveJSON();
+
+
+
+}
+else
+{
+
+
+
+if (me != null && me.Role == RoleType.Admin)
+{
+elemToEdit.Role = admin.Role;
+Services.PersistenceService.SaveJSON();
+
+
+
+}
+
+
+
+}
+}
+Services.PersistenceService.SaveJSON();
+return RedirectToAction(nameof(Index3));
+}
+catch
+{
+return View();
+}

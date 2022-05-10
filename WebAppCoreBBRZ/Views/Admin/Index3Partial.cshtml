@@ -1,0 +1,14 @@
+﻿@model IEnumerable<WebAppCoreBBRZ.Models.Admin>
+
+<p>
+    @{ 
+        var numberOfLoggedInUsers = WebAppCoreBBRZ.Controllers.AdminController.adminListe.
+            Where(x => x.SessionID != null).ToList().Count();
+
+        
+    }
+
+    Number of loggedIn users: @numberOfLoggedInUsers 
+
+</p>
+
