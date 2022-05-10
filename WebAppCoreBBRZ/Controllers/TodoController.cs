@@ -95,6 +95,7 @@ namespace WebAppCoreBBRZ.Controllers
                 elemToEdit.Aufgabe = todo.Aufgabe;
                 elemToEdit.Beschreibung = todo.Beschreibung;
                 elemToEdit.Done = todo.Done;
+                elemToEdit.FKUser = todo.FKUser;
 
                 return RedirectToAction(nameof(Index));
             }

@@ -59,7 +59,17 @@
                 @*@Html.DisplayFor(modelItem => item.Done)*@
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FKUser)
+                @{ 
+                    var tempUser = WebAppCoreBBRZ.Controllers.AdminController.adminListe.
+                        FirstOrDefault(x => x.Id == item.FKUser);
+                    string output = null;
+                    if (tempUser != null)
+                        output = tempUser.Id + " - " + tempUser.Name;
+                }
+                
+                @output
+
+                @*@Html.DisplayFor(modelItem => item.FKUser)*@
             </td>
 
             @*<td>

@@ -13,10 +13,10 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @*<div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>*@
+            <label asp-for="Id" class="control-label"></label>
+            <input asp-for="Id" class="form-control" />
+            <span asp-validation-for="Id" class="text-danger"></span>
+        </div>*@
             <div class="form-group">
                 <label asp-for="Aufgabe" class="control-label"></label>
                 <input asp-for="Aufgabe" class="form-control" />
@@ -32,11 +32,39 @@
                     <input class="form-check-input" asp-for="Done" /> @Html.DisplayNameFor(model => model.Done)
                 </label>
             </div>
+
+            @{ 
+                WebAppCoreBBRZ.Services.PersistenceService.LoadJSON();
+                var userListe = WebAppCoreBBRZ.Controllers.AdminController.adminListe.ToList();
+
+            }
+
+            <div class="form-group">
+                <label asp-for="FKUser" class="control-label"></label>
+                <select asp-for="FKUser" class="form-control">
+                    @*<option> 1 </option>
+        <option> 2 </option>*@
+                    <option>Not set</option>
+                    @{ foreach (var u in userListe)
+                        {
+                            if (Model.FKUser == u.Id)
+                            {
+                <option value="@u.Id" selected>@u.Id - @u.Name</option> }
+                                else
+                                {
+                                    <option value="@u.Id">@u.Id - @u.Name</option>
+                                }
+
+                                // TempData["selectUser"] = u.Id + " - " + u.Name;
+                            } }
+
+                </select>
+            </div>
             @*<div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Active" /> @Html.DisplayNameFor(model => model.Active)
-                </label>
-            </div>*@
+            <label class="form-check-label">
+                <input class="form-check-input" asp-for="Active" /> @Html.DisplayNameFor(model => model.Active)
+            </label>
+        </div>*@
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
