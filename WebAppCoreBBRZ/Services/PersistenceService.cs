@@ -63,21 +63,24 @@ namespace WebAppCoreBBRZ.Services
                 JavaScriptSerializer javascriptSerializer = new JavaScriptSerializer();
                 string ourJSONData = null;
 
-                if (!System.IO.File.Exists(WebAppCoreBBRZ.Controllers.TodoController.filename))
-                    return false;
-
-                using (StreamReader sw = new StreamReader(
-                    WebAppCoreBBRZ.Controllers.TodoController.filename))
+                if (System.IO.File.Exists(WebAppCoreBBRZ.Controllers.TodoController.filename))
+                // return false;
                 {
-                    ourJSONData = sw.ReadToEnd();
+                    using (StreamReader sw = new StreamReader(
+                    WebAppCoreBBRZ.Controllers.TodoController.filename))
+                    {
+                        ourJSONData = sw.ReadToEnd();
+                    }
+
+                    var listeVonTodos = javascriptSerializer.
+                        Deserialize<List<WebAppCoreBBRZ.Models.Todo>>(ourJSONData);
+
+                    WebAppCoreBBRZ.Controllers.TodoController.todoListe = listeVonTodos;
                 }
-
-                var listeVonTodos = javascriptSerializer.
-                    Deserialize<List<WebAppCoreBBRZ.Models.Todo>>(ourJSONData);
-                
-                WebAppCoreBBRZ.Controllers.TodoController.todoListe = listeVonTodos;
-
-               
+                else // nicht existiert ... 
+                {
+                    WebAppCoreBBRZ.Controllers.TodoController.todoListe.Clear();
+                }            
 
             }
             catch (Exception e)
