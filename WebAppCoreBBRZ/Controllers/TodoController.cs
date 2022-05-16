@@ -22,10 +22,15 @@ namespace WebAppCoreBBRZ.Controllers
             var elemToDisplay = todoListe.Where(x => x.Active == true).ToList();
 
             if (doneitem != null && id != null)
+            {
                 if (doneitem == false)
                     todoListe.FirstOrDefault(x => x.Id == id).Done = true;
                 else
                     todoListe.FirstOrDefault(x => x.Id == id).Done = false;
+
+                Services.PersistenceService.SaveJSON();
+            }
+                
 
             if (sortdone == "up")
                 return View(elemToDisplay.OrderBy(x => x.Done).ThenBy(x => x.Aufgabe ));
