@@ -23,12 +23,13 @@ namespace WebAppCoreBBRZ.Controllers
 
             if (doneitem != null && id != null)
             {
-                if (doneitem == false)
+                if (doneitem == true)
                     todoListe.FirstOrDefault(x => x.Id == id).Done = true;
                 else
                     todoListe.FirstOrDefault(x => x.Id == id).Done = false;
 
                 Services.PersistenceService.SaveJSON();
+                return RedirectToAction("Index");
             }
                 
 

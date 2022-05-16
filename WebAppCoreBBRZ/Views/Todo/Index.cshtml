@@ -53,7 +53,12 @@
                 @Html.DisplayFor(modelItem => item.Beschreibung)
             </td>
             <td>
-                @{ bool tempitem = item.Done; }
+                @{ bool tempitem = item.Done;
+                    if (tempitem == true)
+                        tempitem = false;
+                    else
+                        tempitem = true;
+                    }
                 @Html.ActionLink(tempitem.ToString(), "Index", new { doneitem = tempitem, id = item.Id })
 
                 @*@Html.DisplayFor(modelItem => item.Done)*@
