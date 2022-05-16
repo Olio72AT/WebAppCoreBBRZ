@@ -10,12 +10,15 @@ namespace WebAppCoreBBRZ.Controllers
 {
     public class TodoController : Controller
     {
+        public static string filename = "tododata.json";
         public static List<Todo> todoListe = new List<Todo>();
 
         // GET: TodoController
         public ActionResult Index(string sortaufgabe, string sortbeschreibung, string sortdone, 
             bool? doneitem, int? id )
         {
+            Services.PersistenceService.LoadJSON();
+
             var elemToDisplay = todoListe.Where(x => x.Active == true).ToList();
 
             if (doneitem != null && id != null)
@@ -45,6 +48,8 @@ namespace WebAppCoreBBRZ.Controllers
         // GET: TodoController/Details/5
         public ActionResult Details(int id)
         {
+            Services.PersistenceService.LoadJSON();
+
             return View(todoListe.FirstOrDefault(y => y.Id == id));
         }
 
@@ -59,6 +64,7 @@ namespace WebAppCoreBBRZ.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Todo todo)
         {
+            Services.PersistenceService.LoadJSON();
             try
             {
                 var itemToCreate = new Todo();
@@ -68,7 +74,7 @@ namespace WebAppCoreBBRZ.Controllers
                 itemToCreate.Done = todo.Done;
 
                 todoListe.Add(itemToCreate);
-
+                Services.PersistenceService.SaveJSON();
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -80,6 +86,7 @@ namespace WebAppCoreBBRZ.Controllers
         // GET: TodoController/Edit/5
         public ActionResult Edit(int id)
         {
+            Services.PersistenceService.LoadJSON();
             return View(todoListe.FirstOrDefault(y => y.Id == id));
         }
 
@@ -88,6 +95,7 @@ namespace WebAppCoreBBRZ.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, Todo todo)
         {
+            Services.PersistenceService.LoadJSON();
             try
             {
                 var elemToEdit = todoListe.FirstOrDefault(y => y.Id == id);
@@ -96,7 +104,7 @@ namespace WebAppCoreBBRZ.Controllers
                 elemToEdit.Beschreibung = todo.Beschreibung;
                 elemToEdit.Done = todo.Done;
                 elemToEdit.FKUser = todo.FKUser;
-
+                Services.PersistenceService.SaveJSON();
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -108,6 +116,7 @@ namespace WebAppCoreBBRZ.Controllers
         // GET: TodoController/Delete/5
         public ActionResult Delete(int id)
         {
+            Services.PersistenceService.LoadJSON();
             return View(todoListe.FirstOrDefault(x => x.Id == id));
         }
 
@@ -119,6 +128,7 @@ namespace WebAppCoreBBRZ.Controllers
             try
             {
                 todoListe.FirstOrDefault(x => x.Id == id).Active = false;
+                Services.PersistenceService.SaveJSON();
                 return RedirectToAction(nameof(Index));
             }
             catch
